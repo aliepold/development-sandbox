@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm/orm_2_0.xsd"
+        version="2.0">
+
+	<package>aries.jpa.mapping.entities</package>
+	<entity class="aries.jpa.mapping.entities.Developer" name="Developer">
+		<named-query name="GET_DEVELOPER">
+			<query>SELECT DISTINCT record FROM Developer record ORDER BY record.name</query>
+		</named-query>
+		<attributes>
+			<id name="id">
+				<generated-value strategy="SEQUENCE" />
+			</id>
+			<basic name="name">
+				<column name="NAME" length="255" />
+			</basic>
+		</attributes>
+	</entity>
+	
+</entity-mappings>
