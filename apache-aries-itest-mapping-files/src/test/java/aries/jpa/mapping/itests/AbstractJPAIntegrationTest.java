@@ -149,7 +149,7 @@ public abstract class AbstractJPAIntegrationTest {
 				this.mvnBundle("org.jboss", "jandex"),
 				this.mvnBundle("org.hibernate.common", "hibernate-commons-annotations"),
 				this.mvnBundle("org.hibernate", "hibernate-core"),
-				this.mvnBundle("org.hibernate", "hibernate-entitymanager"),
+				//this.mvnBundle("org.hibernate", "hibernate-entitymanager"),
 				this.mvnBundle("org.hibernate", "hibernate-osgi")
 				);
 	}
