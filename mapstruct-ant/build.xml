@@ -1,0 +1,52 @@
+<project name="mapstruct-ant" default="compile" basedir=".">
+	<description>
+    Build file mit mapstruct
+  </description>
+	<!-- set global properties for this build -->
+	<property name="src" location="src/main/java" />
+	<property name="gen-src" location="target/generated-sources" />
+	<property name="build" location="target/classes" />
+
+	<property name="hibernate" location="C:/Users/aliepold/.m2/repository/org/hibernate" />
+	<property name="mapstruct" location="C:/Users/aliepold/.m2/repository/org/mapstruct" />
+	<property name="junit" location="C:/Users/aliepold/.m2/repository/junit/junit/4.12" />
+
+	<path id="lib.path">
+		<fileset dir="${hibernate}">
+			<include name="javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/*.jar" />
+			<include name="javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/*.jar" />
+			<include name="hibernate-search-engine/5.5.5.Final/*.jar" />
+			<include name="hibernate-core/5.0.7.Final/*.jar" />
+		</fileset> 
+			
+		<fileset dir="${mapstruct}">
+			<include name="mapstruct-jdk8/1.2.0.Final/*.jar" />
+			<include name="mapstruct-processor/1.2.0.Final/*.jar" />
+		</fileset>
+			
+		<fileset dir="${junit}" includes="*.jar" />
+	</path>
+
+
+	<target name="init">
+		<!-- Erzeuge einen Timestamp -->
+		<tstamp />
+		<!-- Erzeuge die Verzeichnis-Struktur für compile -->
+		<mkdir dir="${gen-src}" />
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="compile" depends="init" description="Kompiliere den Code">
+		<!-- Kompiliere den Java Code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${build}" >
+			<classpath refid="lib.path"/>
+			<compilerarg line="-processorpath ${mapstruct}/mapstruct-processor/1.2.0.Final/mapstruct-processor-1.2.0.Final.jar"/>
+			<compilerarg line="-s ${gen-src}"/>
+		</javac>
+	</target>
+
+	<target name="clean" description="clean up">
+		<!-- Lösche das ${build} Verzeichnis. -->
+		<delete dir="${build}" />
+	</target>
+</project>

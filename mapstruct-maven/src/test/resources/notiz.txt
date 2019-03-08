@@ -1,0 +1,5 @@
+	
+	// Mapping umgekehrt
+	@Mapping(source = "customerNumber", target = "customerId")
+	@Mapping(source = "fullName", target = "name")
+	Customer customer2Domain(CustomerVO customer);
